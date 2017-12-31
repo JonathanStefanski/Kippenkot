@@ -1,0 +1,44 @@
+h1 {
+    color: red;
+}
+
+.search-input {
+    width: 350px;
+    height: initial;
+    display: inline-block;
+    padding: 3px 6px;
+    margin-left: 4px;
+}
+
+i.fa.fa-plus {
+    margin-right: 5px;
+    background: #0275d8;
+    border-radius: 50%;
+    color: white;
+    padding: 2px 4px;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.custom-control-indicator {
+    position: relative;
+}
+
+.custom-control {
+    padding-left: inherit;
+    margin-right: inherit;
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width: 442px) {
+    .search-group {
+        float: left;
+        display: block;
+        width: 100%;
+    }
+    .search-input {
+        width: 90%;
+    }
+}

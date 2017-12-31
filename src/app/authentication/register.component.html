@@ -1,0 +1,25 @@
+<form *ngIf="registerForm" 
+  [formGroup]="registerForm" 
+  novalidate 
+  (ngSubmit)="register()">
+
+  <div class="form-group" >
+    <label for="UserName">Email address</label>
+    <input 
+      type="email" 
+      class="form-control" 
+      id="userNameId" 
+      aria-describedby="emailHelp" 
+      placeholder="Jane Doe"
+      formControlName="userName">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  
+  <button type="submit" 
+    class="btn btn-success" 
+    [ngClass]="{'disabled': !registerForm.valid && (registerForm.dirty || registerForm.touched)}" 
+    [disabled]="!registerForm.valid && registerForm.dirty"
+  >
+      Registreer mij!
+  </button>
+</form>

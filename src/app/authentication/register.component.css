@@ -1,0 +1,17 @@
+.ng-valid.ng-dirty:not(form), 
+.ng-valid.ng-touched:not(form)  
+{
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-pending.ng-dirty:not(form),
+.ng-pending.ng-touched:not(form) 
+{
+  border-left: 5px solid rgb(247, 210, 91); /* orange */
+}
+
+.ng-invalid.ng-dirty:not(form),
+.ng-invalid.ng-touched:not(form)
+{
+  border-left: 5px solid #a94442; /* red */
+}

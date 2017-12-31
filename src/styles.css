@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+
+nav.navbar {
+    z-index: 1;
+}
+
+.has-danger .help-block {
+    color: #d9534f;
+}
+
+.ui-datatable .ui-datatable-footer,
+.ui-datatable .ui-datatable-header {
+    overflow: auto !important;
+}
+
+.mix-col,
+.id-col {
+    width: 75px;
+    text-align: center;
+    display: table-cell;
+}
+
+.admin-id-col {
+    width: 350px;
+    text-align: center;
+    display: table-cell;
+}
+
+.admin-role-col {
+    width: 150px;
+    text-align: center;
+    display: table-cell;
+}
+
+.admin-gender-col {
+    width: 75px;
+    text-align: center;
+    display: table-cell;
+}
+
+.ui-datatable-odd .mix-col {
+    background: deepskyblue;
+}
+
+.ui-datatable-even .mix-col {
+    background: #00d0ff;
+}
+
+
+/* Fade transition */
+
+my-ng-app div {
+    animation-duration: 1s;
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-fill-mode: forwards;
+    transition: transform 1s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
