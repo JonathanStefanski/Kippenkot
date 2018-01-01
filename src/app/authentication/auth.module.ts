@@ -8,6 +8,7 @@ import { AuthGuard, AdminGuard } from './auth-guard.service';
 import { AppSharedModule } from '../shared/shared.module';
 import { RegisterComponent } from './register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterResolver } from './register.resolver';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     RouterModule.forChild([
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent, resolve: { messages: RegisterResolver} }
     ])
   ],
   declarations: [
@@ -25,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   providers: [
     AuthService,
     AuthGuard,
-    AdminGuard
+    AdminGuard,
+    RegisterResolver
   ]
 })
 export class AuthModule { }

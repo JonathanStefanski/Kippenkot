@@ -8,7 +8,6 @@ import { AppSharedModule } from "../shared/shared.module";
 import { AdminService } from '../admin/admin.service';
 import { UserListResolver } from '../admin/user-list.resolver';
 import { DataTableModule, SharedModule, CheckboxModule } from 'primeng/primeng';
-import { Roles } from 'app/shared/constants';
 
 const ROUTES = [
     { 

@@ -3,7 +3,7 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angul
 
 import { Observable, Subject } from "rxjs/Rx";
 
-import { User } from "./auth.model";
+import { User, RegisterBindingModel } from "./auth.model";
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -74,6 +74,25 @@ export class AuthService {
         let data = new URLSearchParams();
         data.append('userName', userName);
        
+        return this._http.post(url, data, options)  
+            .map((r) => r.ok)
+            .catch(err => {               
+                return Observable.of(<Response>err).map((r) => r.ok)
+            });
+    }
+
+    register(model: RegisterBindingModel): Observable<boolean> {
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        let options = new RequestOptions({ headers: headers });
+        const url = `${this.baseUrl}/Register`;
+
+        let data = new URLSearchParams();
+        data.append('userName', model.username);
+        data.append('email', model.email);
+        data.append('gender', model.gender.toString());
+        data.append('password', model.password);
+        data.append('confirmPassword', model.confirmPassword);
+
         return this._http.post(url, data, options)  
             .map((r) => r.ok)
             .catch(err => {               

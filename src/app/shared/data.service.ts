@@ -9,8 +9,8 @@ export class DataService {
     constructor(private _http: Http) { }
 
     private extractData(response: Response) {        
-        let body = response.json();
-        return body.data || {};
+        let body = response.json();        
+        return body || {};
     }    
 
     private _handleError(err: any) {
@@ -19,8 +19,7 @@ export class DataService {
     }
 
     public getMessages(): Observable<any> {
-        return this._http.get('assets/messages')
-            .do(res => console.log(res))
+        return this._http.get('assets/messages.json')            
             .map(this.extractData)
             .catch(this._handleError);
     }

@@ -12,9 +12,10 @@
         </p-footer>
         <p-column field="id" header="Id" [sortable]="true" styleClass="admin-id-col" [hidden]="hideId"></p-column>
         <p-column field="userName" header="Name" [sortable]="true" styleClass="admin-userName-col"></p-column>
+        <p-column field="email" header="Email" [sortable]="true" styleClass="admin-email-col"></p-column>
         <p-column field="gender" header="Gender" styleClass="admin-gender-col">
             <ng-template let-col let-user="rowData" pTemplate="body">
-                <i class="fa" [ngClass]="{ 'fa-mars': user[col.field] == Gender.MALE,'fa-venus': user[col.field] == Gender.FEMALE,'fa-question': user[col.field] == Gender.UNKNOWN }"></i>
+                <i class="fa" [ngClass]="{ 'fa-mars': user[col.field] == Gender.MALE,'fa-venus': user[col.field] == Gender.FEMALE,'fa-genderless': user[col.field] == Gender.UNKNOWN }"></i>
             </ng-template>
         </p-column>   
         <p-column [header]="Roles.USER" styleClass="admin-role-col">
@@ -48,4 +49,3 @@
         </p-column>        
     </p-dataTable>
 </div>
-

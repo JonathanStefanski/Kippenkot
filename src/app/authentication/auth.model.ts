@@ -1,3 +1,5 @@
+import { Gender } from "../shared/constants";
+
 interface IUser {
     access_token: string,
     token_type: string,
@@ -13,5 +15,15 @@ export class User implements IUser {
         public expires_in:number, 
         public userName:string,
         public roles: string[]        
+    ) { }
+}
+
+export class RegisterBindingModel {
+    constructor (
+        public username:string, 
+        public gender:Gender, 
+        public email:string, 
+        public password:string,
+        public confirmPassword: string  
     ) { }
 }
