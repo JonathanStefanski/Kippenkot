@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { environment } from 'environments/environment';
+import { environment } from '../../environments/environment';
 
 @Component({   
     moduleId: module.id, 
@@ -7,7 +7,7 @@ import { environment } from 'environments/environment';
     styleUrls: ['home.component.css']
 })
 export class HomeComponent {    
-    public pageTitle: string = 'Welcome';
+    public pageTitle = 'Welcome';
     public lastUpdated: Date = environment.lastUpdated;
-    public imagePath: string = '../assets/images/home.png'
+    public imagePath = '../assets/images/no-nugget.jpg';
 }

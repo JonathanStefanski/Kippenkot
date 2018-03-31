@@ -1,4 +1,4 @@
-import { Roles, Gender } from "../shared/constants";
+import { Roles, Gender } from '../shared/constants';
 
 interface IUser {
     id: string;
@@ -30,7 +30,7 @@ export class User implements IUser {
         return array.map(obj => new User(obj));
     }
 
-    isInRole(role: Roles):boolean {
+    isInRole(role: Roles): boolean {
         return this.roles.map(r => r.toLowerCase()).indexOf(role.toLowerCase()) >= 0;
     }
 }

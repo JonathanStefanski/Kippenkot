@@ -1,32 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MasterMindComponent } from './mastermind.component';
 
-import { AppSharedModule } from "../shared/shared.module";
+import { AppSharedModule } from '../shared/shared.module';
 import { DragDropModule } from 'primeng/primeng';
-import { ColorService } from "./color.service";
-import { ColorsResolver } from "./color-resolver.service";
+import { ColorService } from './color.service';
+import { ColorsResolver } from './color-resolver.service';
 
 const ROUTES = [
-    { 
-        path: '', 
+    {
+        path: '',
         component: MasterMindComponent,
         resolve: { colors: ColorsResolver}
     }
-]
+];
 
 @NgModule({
-    imports: [      
-        AppSharedModule,   
+    imports: [
+        AppSharedModule,
         DragDropModule,
-        RouterModule.forChild(ROUTES) 
+        RouterModule.forChild(ROUTES)
     ],
-    declarations: [ 
+    declarations: [
         MasterMindComponent
     ],
-    providers: [         
+    providers: [
         ColorService,
         ColorsResolver
     ]

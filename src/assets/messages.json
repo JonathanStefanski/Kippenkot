@@ -13,7 +13,8 @@
     },
     "email": {
         "required": "Gelieve een email adres in te voeren.",
-        "email": "Gelieve een geldig email adres in te voeren."
+        "email": "Gelieve een geldig email adres in te voeren.",
+        "emailOrEmpty": "Gelieve een geldig email adres in te voeren."
     },
     "gender": {
         "required": "Gelieve een geslacht aan te duiden."

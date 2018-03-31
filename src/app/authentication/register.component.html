@@ -1,90 +1,87 @@
-<form *ngIf="registerForm" 
-  [formGroup]="registerForm" 
-  novalidate 
-  (ngSubmit)="register()">
+<form *ngIf="registerForm" [formGroup]="registerForm" novalidate (ngSubmit)="register()">
 
-  <div class="form-group" >
-    <label for="userNameId">Gebruikersnaam</label>
-    <input       
-      class="form-control" 
-      id="userNameId" 
-      placeholder="Jane Doe"
-      formControlName="userName">
-    <div class="invalid-feedback" *ngIf="displayMessage.userName">
-        {{displayMessage.userName}}
-    </div>
-  </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-header text-white bg-dark">
+          Registreer jezelf.
+        </div>
+        <div class="card-body">
 
-  <div class="form-group" >
-    <label for="emailId">Email</label>
-    <input 
-      type="email" 
-      class="form-control" 
-      id="emailId" 
-      aria-describedby="emailHelp" 
-      placeholder="jane@doe.be"
-      formControlName="email">
-      <div class="invalid-feedback" *ngIf="displayMessage.email">
-        {{displayMessage.email}}
+          <div class="form-group row">            
+            <label for="userNameId" class="col-lg-4 col-form-label font-weight-bold">Gebruikersnaam</label>
+            <div class="col-lg-8">
+                <input class="form-control" id="userNameId" placeholder="Jane Doe" formControlName="userName">
+                <div class="invalid-feedback" *ngIf="displayMessage.userName">
+                  {{displayMessage.userName}}
+                </div>
+            </div>            
+          </div>
+
+          <div class="form-group row">
+            <label for="emailId" class="col-lg-4 col-form-label font-weight-bold">Email</label>
+            <div class="col-lg-8">
+                <input type="email" class="form-control" id="emailId" aria-describedby="emailHelp" placeholder="jane@doe.be" formControlName="email">
+                <div class="invalid-feedback" *ngIf="displayMessage.email">
+                  {{displayMessage.email}}
+                </div>
+                <small id="emailHelp" class="form-text text-muted">Jouw email adres zal niet gedeeld worden met derden.</small>
+            </div>            
+          </div>
+
+          <div formGroupName="passwords">
+            <div class="form-group row">
+              <label for="passwordId" class="col-lg-4 col-form-label font-weight-bold">Wachtwoord</label>
+              <div class="col-lg-8">
+                  <input type="password" class="form-control" id="passwordId" formControlName="password" placeholder="Wachtwoord">
+                  <div class="invalid-feedback" *ngIf="displayMessage.password">
+                    {{displayMessage.password}}
+                  </div>
+              </div>              
+            </div>
+
+            <div class="form-group row">
+              <label for="confirmPasswordId" class="col-lg-4 col-form-label font-weight-bold">Bevestig wachtwoord</label>
+              <div class="col-lg-8">
+                  <input type="password" class="form-control" id="confirmPasswordId" formControlName="confirmPassword" placeholder="Bevestig wachtwoord">
+                  <div class="invalid-feedback" *ngIf="displayMessage.confirmPassword">
+                    {{displayMessage.confirmPassword}}
+                  </div>
+              </div>              
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="gender" class="col-lg-4 col-form-label font-weight-bold">Geslacht</label>
+            <div class="col-lg-8">
+                <label class="custom-control custom-radio">
+                    <input type="radio" id="genderMaleId" name="gender" class="custom-control-input" formControlName="gender" [value]="Gender.MALE">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Man</span>
+                  </label>
+                  <label class="custom-control custom-radio">
+                    <input type="radio" id="genderFemaleId" name="gender" class="custom-control-input" formControlName="gender" [value]="Gender.FEMALE">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Vrouw</span>
+                  </label>
+                  <label class="custom-control custom-radio">
+                    <input type="radio" id="genderUnknownId" name="gender" class="custom-control-input" formControlName="gender" [value]="Gender.UNKNOWN">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Deel ik liever niet</span>
+                    <div class="invalid-feedback" *ngIf="displayMessage.gender">
+                      {{displayMessage.gender}}
+                    </div>
+                  </label>
+            </div>            
+          </div>
+        </div>
+        <div class="card-footer text-lg-right">
+          <button type="submit" class="btn btn-success" [ngClass]="{'disabled': !registerForm.valid && (registerForm.dirty || registerForm.touched) && firstSubmit}"
+            [disabled]="!registerForm.valid && registerForm.dirty && firstSubmit">
+            Registreer mij!
+          </button>
+        </div>
       </div>
-    <small id="emailHelp" class="form-text text-muted">Uw email adres zal niet gedeeld worden met derden.</small>
-  </div>
-
-  <div formGroupName="passwords">
-    <div class="form-group" >
-      <label for="passwordId">Wachtwoord</label>
-      <input 
-        type="password" 
-        class="form-control" 
-        id="passwordId"       
-        formControlName="password"
-        placeholder="Wachtwoord">
-        <div class="invalid-feedback" *ngIf="displayMessage.password">
-          {{displayMessage.password}}
-        </div>   
     </div>
-  
-    <div class="form-group" >
-      <label for="confirmPasswordId">Bevestig wachtwoord</label>
-      <input 
-        type="password" 
-        class="form-control" 
-        id="confirmPasswordId"       
-        formControlName="confirmPassword"
-        placeholder="Bevestig wachtwoord">
-        <div class="invalid-feedback" *ngIf="displayMessage.confirmPassword">
-          {{displayMessage.confirmPassword}}
-        </div> 
-    </div>
-  </div>  
-
-  <div >
-    <label class="custom-control custom-radio">
-      <input type="radio" id="genderMaleId" name="gender" class="custom-control-input" formControlName="gender" [value]="Gender.MALE">
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Man</span>
-    </label>
-    <label class="custom-control custom-radio">
-      <input type="radio" id="genderFemaleId" name="gender" class="custom-control-input" formControlName="gender" [value]="Gender.FEMALE">
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Vrouw</span>
-    </label>
-    <label class="custom-control custom-radio">
-      <input type="radio" id="genderUnknownId" name="gender" class="custom-control-input" formControlName="gender" [value]="Gender.UNKNOWN">
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Deel ik liever niet</span>
-      <div class="invalid-feedback" *ngIf="displayMessage.gender">
-        {{displayMessage.gender}}
-      </div> 
-    </label>
-
   </div>
-
-  <button type="submit" 
-    class="btn btn-success" 
-    [ngClass]="{'disabled': !registerForm.valid && (registerForm.dirty || registerForm.touched) && firstSubmit}" 
-    [disabled]="!registerForm.valid && registerForm.dirty && firstSubmit"
-  >
-      Registreer mij!
-  </button>
 </form>

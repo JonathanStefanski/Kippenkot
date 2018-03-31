@@ -17,8 +17,8 @@ import { RegisterBindingModel } from './auth.model';
 })
 export class RegisterComponent implements OnInit, AfterViewInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];  
-  registerForm: FormGroup; 
-  firstSubmit: boolean = false; 
+  registerForm: FormGroup;
+  firstSubmit = false;
   readonly Gender = Gender;
   
   // Use with the generic validation message class
@@ -42,22 +42,22 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     );    
 
     // Set form
-    let passwordGroup = this._fb.group({
+    const passwordGroup = this._fb.group({
       password: ['', [Validators.required, Validators.pattern(/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})/)]],
       confirmPassword: ['', Validators.required]
     }, { validator: UserValidators.matchPasswords()});
 
     this.registerForm = this._fb.group({
       userName: ['', [Validators.required, Validators.minLength(3)], [UserValidators.isUserNameTaken(this._authService)]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [UserValidators.emailOrEmpty()]],
       gender: ['', Validators.required],
       passwords: passwordGroup
-    })
+    });
   }
 
-  ngAfterViewInit():void {   
+  ngAfterViewInit(): void {   
     // Watch for the blur event from any input element on the form.
-    let controlBlurs: Observable<any>[] = this.formInputElements
+    const controlBlurs: Observable<any>[] = this.formInputElements
     .map((formControl: ElementRef) => Observable.fromEvent(formControl.nativeElement, 'blur'));
 
     // Watch for any statusChanges
@@ -69,23 +69,20 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   register() {    
     this.firstSubmit = true;
     this.touchFormInputs(this.registerForm);
-
-    console.log(this.registerForm);
+    
     if (!this.registerForm.valid) return;
 
-    let model = new RegisterBindingModel(
+    const model = new RegisterBindingModel(
       this.registerForm.get('userName').value,
       this.registerForm.get('gender').value,
       this.registerForm.get('email').value,
       this.registerForm.get('passwords.password').value,
       this.registerForm.get('passwords.confirmPassword').value
-    )
-
-    console.log(model);
-
+    );
+   
     this._authService.register(model).subscribe(
       data => console.log(data)
-    )
+    );
   }
 
   private touchFormInputs(c: FormGroup) {
@@ -93,10 +90,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       const control = c.get(field);            
       if (control instanceof FormControl) {          
         if (control.valid) return;
-        control.updateValueAndValidity();          
+        control.updateValueAndValidity();
         control.markAsTouched({ onlySelf: true });
-      } else if (control instanceof FormGroup) {        
-        this.touchFormInputs(control);            
+      } else if (control instanceof FormGroup) {
+        this.touchFormInputs(control);
       }
     });
   }

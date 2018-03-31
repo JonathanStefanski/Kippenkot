@@ -1,28 +1,30 @@
 import { Component } from '@angular/core';
-import { Router, Event, NavigationStart, NavigationEnd, NavigationError, NavigationCancel } from "@angular/router";
+import { Router, Event, NavigationStart, NavigationEnd, NavigationError, NavigationCancel } from '@angular/router';
 
-import { AuthService } from "./authentication/auth.service";
-import { Roles } from 'app/shared/constants';
+import { AuthService } from './authentication/auth.service';
+import { Roles } from '../app/shared/constants';
 
 
 @Component({
   moduleId: module.id,
+  // tslint:disable-next-line:component-selector
   selector: 'my-ng-app',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css']
 })
 export class AppComponent {  
-  title = 'Lepside';
-  loading: boolean = true;
+  title = 'Kippenkot.be';
+  logo = '/assets/images/baby-chick.png';
+  loading = true;
 
   constructor(private router: Router,
               public _auth: AuthService) {
-    router.events.subscribe((routerEvent : Event) => {
+    router.events.subscribe((routerEvent: Event) => {
       this.checkRouterEvent(routerEvent);
     });
   }
 
-  logout() : void {
+  logout(): void {
      this._auth.logout();
      this.router.navigate([{ outlets: { primary: ['home'], popup: null } }]);            
   }
@@ -39,7 +41,7 @@ export class AppComponent {
     }
   }
 
-  isAdmin() : boolean {
+  isAdmin(): boolean {
     return this._auth.isInRole(Roles.ADMIN.toString());
   }
 }

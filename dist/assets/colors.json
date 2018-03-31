@@ -1,13 +1,4 @@
-[{
-        "index": 4,
-        "color": "Green",
-        "code": "#32CD32"
-    },
-    {
-        "index": 5,
-        "color": "Blue",
-        "code": "#1E90FF"
-    },
+[
     {
         "index": 1,
         "color": "Red",
@@ -22,6 +13,16 @@
         "index": 3,
         "color": "Yellow",
         "code": "#FFFF33"
+    },
+    {
+        "index": 4,
+        "color": "Green",
+        "code": "#32CD32"
+    },
+    {
+        "index": 5,
+        "color": "Blue",
+        "code": "#1E90FF"
     },
     {
         "index": 6,

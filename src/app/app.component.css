@@ -14,3 +14,13 @@ a.link:hover {
 .message-btn {
     margin-left: 30px;    
 }
+
+.navbar-brand {
+    margin-left: 40px;
+}
+
+.navbar-brand-logo {
+    height: 30px;
+    position: absolute;
+    left: 15px;
+}

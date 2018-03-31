@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" routerLink="/home">
-        <i class="fa fa-futbol-o"></i> Lepside.be
+        <img class="navbar-brand-logo" alt="logo" [src]="logo" /> Kippenkot.be
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler01" 
             aria-controls="navbarToggler01" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarToggler01">
             <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" routerLink="/home" routerLinkActive="active">Home</a>
+                    <a class="nav-link" data-toggle="tab" routerLink="/home" routerLinkActive="active">Startpagina</a>
                 </li> 
                 <li *ngIf="isAdmin()" class="nav-item">
                     <a class="nav-link" data-toggle="tab" routerLink="/admin" routerLinkActive="active">Admin</a>
