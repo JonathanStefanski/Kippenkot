@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from "@angular/router";
-import { Observable } from "rxjs/Rx";
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
 
-import { AdminService } from "./admin.service";
-import { User } from "./admin.models";
+import { AdminService } from './admin.service';
+import { User } from './admin.models';
 
 @Injectable()
 export class UserListResolver implements Resolve<User[]> {

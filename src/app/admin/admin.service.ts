@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from "@angular/http";
-import { Observable } from "rxjs/Rx";
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 
 import { User } from './admin.models';
-import { AuthService } from "../authentication/auth.service";
+import { AuthService } from '../authentication/auth.service';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -18,17 +18,17 @@ export class AdminService {
     }
 
     private _setOptions() {
-        let bearer = this._auth.currentUser == null ? '' : this._auth.currentUser.access_token;
-        this.headers = new Headers({ 'Content-Type': 'application/json','Authorization': `Bearer ${bearer}` });
+        const bearer = this._auth.currentUser == null ? '' : this._auth.currentUser.access_token;
+        this.headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${bearer}` });
         this.options = new RequestOptions({ headers: this.headers });    
     }
 
     private _extractData(response: Response) {    
         try {
-            let body = response.json();
+            const body = response.json();
             return body || {};
         } catch (error) {
-            return {}
+            return {};
         } 
     }    
 
@@ -37,21 +37,21 @@ export class AdminService {
         return Observable.throw(err);
     }
 
-    getUsers() : Observable<User[]> {
+    getUsers(): Observable<User[]> {
         this._setOptions();
 
-        let url = `${this.baseUrl}/users`
+        const url = `${this.baseUrl}/users`;
         return this._http.get(url, this.options)            
             .map(this._extractData)            
             .map(r => User.fromJSONArray(r))            
             .catch(this._handleError);
     }
 
-    changeRole(user: User, role: string, flag:boolean): Observable<Response> {
+    changeRole(user: User, role: string, flag: boolean): Observable<Response> {
         this._setOptions();
 
-        let url = `${this.baseUrl}/changeRole`;
-        let data = {
+        const url = `${this.baseUrl}/changeRole`;
+        const data = {
             UserId: user.id,
             Role: role,
             Allow: flag

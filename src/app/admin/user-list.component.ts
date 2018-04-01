@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { User } from './admin.models';
 import { AdminService } from './admin.service';
-import { Roles, Gender } from "../shared/constants";
+import { Roles, Gender } from '../shared/constants';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit {
     ngOnInit() { 
         this._route.data.subscribe(
             data => {this.users = data['users']; console.log(this.users); }
-        )
+        );
         this.hideId = true;
     }
 
@@ -47,7 +47,7 @@ export class UserListComponent implements OnInit {
             },
             () => {
                 user.locked = false;
-                if(event.target.checked)
+                if (event.target.checked)
                     user.roles.push(role);
                 else
                     user.roles.splice(user.roles.map(r => r.toLocaleLowerCase()).indexOf(role.toLocaleLowerCase()), 1);

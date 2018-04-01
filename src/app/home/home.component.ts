@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
     styleUrls: ['home.component.css']
 })
 export class HomeComponent {    
-    public pageTitle = 'Welcome';
+    public pageTitle = 'Welkom bij kippenkot.be!';
     public lastUpdated: Date = environment.lastUpdated;
     public imagePath = '../assets/images/no-nugget.jpg';
 }

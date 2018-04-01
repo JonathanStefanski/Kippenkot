@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { UserListComponent } from './user-list.component';
 
-import { AppSharedModule } from "../shared/shared.module";
+import { AppSharedModule } from '../shared/shared.module';
 import { AdminService } from '../admin/admin.service';
 import { UserListResolver } from '../admin/user-list.resolver';
 import { DataTableModule, SharedModule, CheckboxModule } from 'primeng/primeng';
@@ -20,7 +20,7 @@ const ROUTES = [
         redirectTo: 'users', 
         pathMatch: 'full' 
     }, 
-]
+];
 
 @NgModule({
     imports: [      
