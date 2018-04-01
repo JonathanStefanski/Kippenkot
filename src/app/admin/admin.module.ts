@@ -6,14 +6,15 @@ import { UserListComponent } from './user-list.component';
 
 import { AppSharedModule } from '../shared/shared.module';
 import { AdminService } from '../admin/admin.service';
-import { UserListResolver } from '../admin/user-list.resolver';
+import { UserListResolver, RoleListResolver } from '../admin/admin.resolver';
 import { DataTableModule, SharedModule, CheckboxModule } from 'primeng/primeng';
+
 
 const ROUTES = [
     { 
         path: 'users', 
         component: UserListComponent,
-        resolve: { users: UserListResolver}
+        resolve: { users: UserListResolver, roles: RoleListResolver}
     },
     { 
         path: '', 
@@ -35,7 +36,8 @@ const ROUTES = [
     ],
     providers: [ 
         AdminService,
-        UserListResolver
+        UserListResolver,
+        RoleListResolver
     ]
 })
 export class AdminModule { }

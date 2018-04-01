@@ -16,6 +16,7 @@ export class UserListComponent implements OnInit {
     readonly Gender = Gender;
 
     users: User[];
+    roles: string[];
     hideId: boolean;    
 
     constructor(
@@ -25,7 +26,10 @@ export class UserListComponent implements OnInit {
 
     ngOnInit() { 
         this._route.data.subscribe(
-            data => {this.users = data['users']; console.log(this.users); }
+            data => {
+                this.users = data['users']; console.log(this.users); 
+                this.roles = data['roles']; console.log(this.roles);
+            }
         );
         this.hideId = true;
     }

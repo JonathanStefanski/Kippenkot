@@ -1,7 +1,6 @@
 <h1>Enkel voor beheerders!</h1>
 
 <div *ngIf="users.length > 0">    
-
     <p-dataTable [value]="users" sortMode="multiple" [globalFilter]="gb" #dt [rows]="20" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]" 
                  [multiSortMeta]="sortFields">
         <p-header>           
@@ -18,34 +17,14 @@
                 <i class="fa" [ngClass]="{ 'fa-mars': user[col.field] == Gender.MALE,'fa-venus': user[col.field] == Gender.FEMALE,'fa-genderless': user[col.field] == Gender.UNKNOWN }"></i>
             </ng-template>
         </p-column>   
-        <p-column [header]="Roles.USER" styleClass="admin-role-col">
+        <p-column *ngFor="let role of roles" header="{{role}}" styleClass="admin-role-col">
             <ng-template let-user="rowData" pTemplate="body">
                 <label *ngIf="!user.locked" class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" [checked]="user.isInRole(Roles.USER)" (change)="changeRole(user,Roles.USER,$event)">
+                    <input type="checkbox" class="custom-control-input" [checked]="user.isInRole(role)" (change)="changeRole(user,role,$event)">
                     <span class="custom-control-indicator"></span>
                 </label>
                 <i *ngIf="user.locked" class="fa fa-circle-o-notch fa-spin"></i>
             </ng-template>
         </p-column>
-        <p-column [header]="Roles.ADMIN" styleClass="admin-role-col">
-            <ng-template let-user="rowData" pTemplate="body">
-                <label *ngIf="!user.locked" class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" [checked]="user.isInRole(Roles.ADMIN)" (change)="changeRole(user,Roles.ADMIN,$event)">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description"></span>
-                </label>
-                <i *ngIf="user.locked" class="fa fa-circle-o-notch fa-spin"></i>
-            </ng-template>
-        </p-column>   
-        <p-column [header]="Roles.PRONO" styleClass="admin-role-col">
-            <ng-template let-user="rowData" pTemplate="body">
-                <label *ngIf="!user.locked" class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" [checked]="user.isInRole(Roles.PRONO)" (change)="changeRole(user,Roles.PRONO,$event)">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description"></span>
-                </label>
-                <i *ngIf="user.locked" class="fa fa-circle-o-notch fa-spin"></i>
-            </ng-template>
-        </p-column>        
     </p-dataTable>
 </div>

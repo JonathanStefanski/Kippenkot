@@ -21,3 +21,20 @@ export class UserListResolver implements Resolve<User[]> {
             });
     }
 }
+
+@Injectable()
+export class RoleListResolver implements Resolve<string[]> {
+    constructor(
+        private _adminService: AdminService,
+        private _router: Router
+    ) { }
+
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<string[]> {
+        return this._adminService.getRoles()
+            .catch(error => {
+                console.log(`Retrievel error: ${error}`);
+                this._router.navigate(['/error']);
+                return Observable.of(null);
+            });
+    }
+}

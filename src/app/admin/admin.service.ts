@@ -47,6 +47,15 @@ export class AdminService {
             .catch(this._handleError);
     }
 
+    getRoles(): Observable<string[]> {
+        this._setOptions();
+
+        const url = `${this.baseUrl}/roles`;
+        return this._http.get(url, this.options)            
+            .map(this._extractData)          
+            .catch(this._handleError);
+    }
+
     changeRole(user: User, role: string, flag: boolean): Observable<Response> {
         this._setOptions();
 

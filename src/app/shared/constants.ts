@@ -1,7 +1,8 @@
 export enum Roles {
-    ADMIN = "Administrator",
-    USER = "User",
-    PRONO = "Prono"
+    ADMIN = 'Administrator',
+    USER = 'User',
+    QUIZ = 'Quiz',
+    EUROSONG = 'EuroSong'
 }
 
 export enum Gender {

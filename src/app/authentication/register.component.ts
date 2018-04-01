@@ -19,6 +19,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];  
   registerForm: FormGroup;
   firstSubmit = false;
+  registered = false;
+  gebruiker: string;
   readonly Gender = Gender;
   
   // Use with the generic validation message class
@@ -81,7 +83,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     );
    
     this._authService.register(model).subscribe(
-      data => console.log(data)
+      data => {
+        this.registered = data;
+        this.gebruiker = this.registerForm.get('userName').value;
+      }
     );
   }
 

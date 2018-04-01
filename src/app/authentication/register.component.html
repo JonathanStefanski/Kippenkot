@@ -1,4 +1,4 @@
-<form *ngIf="registerForm" [formGroup]="registerForm" novalidate (ngSubmit)="register()">
+<form *ngIf="registerForm && !registered" [formGroup]="registerForm" novalidate (ngSubmit)="register()">
 
   <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -84,4 +84,34 @@
       </div>
     </div>
   </div>
+
 </form>
+
+<div class="row" *ngIf="registered">
+  <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-header text-white bg-success">
+        Welkom in ons kippenkot!
+      </div>
+      <div class="card-body">
+        <div class="text-center">
+          <img src="/assets/images/chicks-hatching.jpg" alt="Hatching chicks" class="rounded mx-auto d-block img-fluid">
+          
+        </div>        
+        <p>       
+            Beste {{gebruiker}},
+            <br/>
+            <br/>   
+            Wij wensen jou van harte welkom in ons kippenkot! Jouw account is nu geactiveerd en het is mogelijk om in te loggen tot de website. Als gebruiker kan je meedoen aan 
+            allerhande toffe activiteiten zodra je hiervoor de nodige toegang gekregen hebt. Dus houd zeker een oogje in het zeil!
+            <br/>
+            <br/>
+            Veel plezier!
+        </p>
+      </div>
+      <div class="card-footer text-lg-right">
+        <small class="text-muted font-italic">Klik <a routerLink="/login">hier</a> om terug te keren naar de login pagina...</small>       
+      </div>
+    </div>
+  </div>
+</div>
