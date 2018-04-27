@@ -4,6 +4,7 @@
             <img class="card-img-top" [src]="imagePath" alt="Lepside home card image">
             <div class="card-block">
                 <h4 class="card-title">{{pageTitle}}</h4>
+                <p *ngIf="isLoggedIn">Welkom terug, {{username}}!</p>
                 <p class="card-text"><i class="fa fa-pencil"></i> Ontwikkeld door: Jonathan Stefanski</p>
                 <small class="card-text">
                     <a href="http://www.kippenkot.be">www.kippenkot.be</a>
@@ -13,5 +14,6 @@
                 Laatst bijgewerkt op: {{lastUpdated | date: 'dd/MM/yyyy HH:mm'}}
             </div>
         </div>
-    </div>
+    </div>  
+    
 </div>

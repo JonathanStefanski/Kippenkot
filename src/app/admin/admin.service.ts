@@ -72,4 +72,13 @@ export class AdminService {
             .catch(this._handleError);
     }
 
+    getFlags(): Observable<any> {
+        this._setOptions();
+
+        const url = `${environment.apiUrl}/api/eurosong`;
+        return this._http.get(url, this.options)            
+            .map(this._extractData)          
+            .catch(this._handleError);
+    }
+
 }

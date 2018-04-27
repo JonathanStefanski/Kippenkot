@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 
-import { Observable, Subject } from "rxjs/Rx";
+import { Observable, Subject } from 'rxjs/Rx';
 
-import { User, RegisterBindingModel } from "./auth.model";
+import { User, RegisterBindingModel } from './auth.model';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -17,7 +17,7 @@ export class AuthService {
     }
 
     private extractData(response: Response) {        
-        let body = response.json();
+        const body = response.json();
         return body || {};
     }    
 
@@ -30,27 +30,27 @@ export class AuthService {
         return !!this.currentUser;
     }
 
-    isInRole(role : string): boolean {
+    isInRole(role: string): boolean {
         if (this.currentUser == null || this.currentUser.roles == null) return false;
         return this.currentUser.roles.map(r => r.toLowerCase()).indexOf(role.toLowerCase()) > -1;
     }
 
     login(userName: string, password: string): Observable<boolean> {
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        let options = new RequestOptions({ headers: headers });
+        const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        const options = new RequestOptions({ headers: headers });
         const url = environment.apiUrl  + 'Token';
 
-        let data = new URLSearchParams();
+        const data = new URLSearchParams();
         data.append('username', userName);
         data.append('password', password);
         data.append('grant_type', 'password');
         
         return this._http.post(url, data, options)        
         .map((response: Response) => {
-            let userInfo = this.extractData(response);                        
+            const userInfo = this.extractData(response);                        
             if (userInfo) {
                 this.currentUser = userInfo;          
-                this.currentUser.roles = JSON.parse(userInfo["roles"]);                
+                this.currentUser.roles = JSON.parse(userInfo['roles']);                
                 localStorage.setItem('_currentUser', JSON.stringify(this.currentUser));
                 console.log(this.currentUser);
                 return true;
@@ -67,26 +67,26 @@ export class AuthService {
     }
 
     checkName(userName: string): Observable<boolean> {
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        let options = new RequestOptions({ headers: headers });
+        const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        const options = new RequestOptions({ headers: headers });
         const url = `${this.baseUrl}/CheckUsername`;
 
-        let data = new URLSearchParams();
+        const data = new URLSearchParams();
         data.append('userName', userName);
        
         return this._http.post(url, data, options)  
             .map((r) => r.ok)
             .catch(err => {               
-                return Observable.of(<Response>err).map((r) => r.ok)
+                return Observable.of(<Response>err).map((r) => r.ok);
             });
     }
 
     register(model: RegisterBindingModel): Observable<boolean> {
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        let options = new RequestOptions({ headers: headers });
+        const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        const options = new RequestOptions({ headers: headers });
         const url = `${this.baseUrl}/Register`;
 
-        let data = new URLSearchParams();
+        const data = new URLSearchParams();
         data.append('userName', model.username);
         data.append('email', model.email);
         data.append('gender', model.gender.toString());
@@ -96,8 +96,7 @@ export class AuthService {
         return this._http.post(url, data, options)  
             .map((r) => r.ok)
             .catch(err => {               
-                return Observable.of(<Response>err).map((r) => r.ok)
+                return Observable.of(<Response>err).map((r) => r.ok);
             });
     }
-
 }

@@ -42,3 +42,16 @@ i.fa.fa-plus {
         width: 90%;
     }
 }
+
+.flag {
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    margin-right: 1%;
+    margin-top: 1em;
+    
+}
+
+.flag > img {
+    border: 1px solid black;
+}

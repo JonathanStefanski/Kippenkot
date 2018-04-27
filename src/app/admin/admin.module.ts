@@ -7,7 +7,7 @@ import { UserListComponent } from './user-list.component';
 import { AppSharedModule } from '../shared/shared.module';
 import { AdminService } from '../admin/admin.service';
 import { UserListResolver, RoleListResolver } from '../admin/admin.resolver';
-import { DataTableModule, SharedModule, CheckboxModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, CheckboxModule, TooltipModule } from 'primeng/primeng';
 
 
 const ROUTES = [
@@ -28,6 +28,7 @@ const ROUTES = [
         AppSharedModule,
         DataTableModule,
         CheckboxModule,
+        TooltipModule,
         SharedModule,
         RouterModule.forChild(ROUTES) 
     ],
