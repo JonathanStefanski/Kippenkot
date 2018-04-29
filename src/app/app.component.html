@@ -11,8 +11,11 @@
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" routerLink="/home" routerLinkActive="active">Startpagina</a>
                 </li> 
-                <li *ngIf="isAdmin()" class="nav-item">
+                <li *ngIf="isInRole(Roles.ADMIN)" class="nav-item">
                     <a class="nav-link" data-toggle="tab" routerLink="/admin" routerLinkActive="active">Admin</a>
+                </li>
+                <li *ngIf="isInRole(Roles.EUROSONG)" class="nav-item">
+                    <a class="nav-link" data-toggle="tab" routerLink="/eurosong" routerLinkActive="active">Eurosong</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" routerLink="/mastermind" routerLinkActive="active">Mastermind</a>

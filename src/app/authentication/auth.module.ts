@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login.component';
 import { AuthService } from './auth.service';
-import { AuthGuard, AdminGuard } from './auth-guard.service';
+import { AuthGuard, AdminGuard, EurosongGuard } from './auth-guard.service';
 
 import { AppSharedModule } from '../shared/shared.module';
 import { RegisterComponent } from './register.component';
@@ -27,6 +27,7 @@ import { RegisterResolver } from './register.resolver';
     AuthService,
     AuthGuard,
     AdminGuard,
+    EurosongGuard,
     RegisterResolver
   ]
 })

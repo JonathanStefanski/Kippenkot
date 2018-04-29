@@ -13,6 +13,8 @@ import { Roles } from '../app/shared/constants';
   styleUrls: ['app.component.css']
 })
 export class AppComponent {  
+  readonly Roles = Roles;
+  
   title = 'Kippenkot.be';
   logo = '/assets/images/baby-chick.png';
   loading = true;
@@ -41,8 +43,8 @@ export class AppComponent {
     }
   }
 
-  isAdmin(): boolean {
-    return this._auth.isInRole(Roles.ADMIN.toString());
+  isInRole(role: Roles): boolean {
+    return this._auth.isInRole(role);
   }
 }
 

@@ -28,10 +28,3 @@
         </p-column>
     </p-dataTable>
 </div>
-
-<div *ngIf="flags">
-    <div class="flag" *ngFor="let flag of flags" pTooltip="{{flag.country}}">
-        <img class="img-fluid" src="assets/images/flags/{{flag.code}}.svg" />
-    </div>
-
-</div>

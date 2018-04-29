@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, Route,
-        CanActivate, CanActivateChild, CanLoad } from "@angular/router";
+        CanActivate, CanActivateChild, CanLoad } from '@angular/router';
         
-import { AuthService } from "./auth.service";
+import { AuthService } from './auth.service';
 import { Roles } from '../shared/constants';
 
 @Injectable()
@@ -12,17 +12,17 @@ export  class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
                 private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        //console.log('In canActivate: ' + state.url);
+        // console.log('In canActivate: ' + state.url);
         return this.checkLoggedIn(state.url);
     }
 
     canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        //console.log('In canActivateChild: ' + state.url);
+        // console.log('In canActivateChild: ' + state.url);
         return this.checkLoggedIn(state.url);
     }
 
     canLoad(route: Route): boolean {
-        //console.log('In canLoad: ' + route.path);
+        // console.log('In canLoad: ' + route.path);
         return this.checkLoggedIn(route.path);
     }
 
@@ -45,22 +45,55 @@ export class AdminGuard implements CanActivate, CanActivateChild, CanLoad {
                 private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        //console.log('In canActivate: ' + state.url);
+        // console.log('In canActivate: ' + state.url);
         return this.checkRole(state.url);
     }
 
     canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        //console.log('In canActivateChild: ' + state.url);
+        // console.log('In canActivateChild: ' + state.url);
         return this.checkRole(state.url);
     }
 
     canLoad(route: Route): boolean {
-        //console.log('In canLoad: ' + route.path);
+        // console.log('In canLoad: ' + route.path);
         return this.checkRole(route.path);
     }
 
     checkRole(url: string): boolean {
         if (this.authService.isInRole(Roles.ADMIN)) {
+            return true;
+        }
+
+        // Retain the attempted URL for redirection
+        this.authService.redirectUrl = url;
+        this.router.navigate(['/login']);
+        return false;
+    }
+}
+
+@Injectable()
+export class EurosongGuard implements CanActivate, CanActivateChild, CanLoad {
+
+    constructor(private authService: AuthService,
+                private router: Router) { }
+
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        // console.log('In canActivate: ' + state.url);
+        return this.checkRole(state.url);
+    }
+
+    canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        // console.log('In canActivateChild: ' + state.url);
+        return this.checkRole(state.url);
+    }
+
+    canLoad(route: Route): boolean {
+        // console.log('In canLoad: ' + route.path);
+        return this.checkRole(route.path);
+    }
+
+    checkRole(url: string): boolean {
+        if (this.authService.isInRole(Roles.EUROSONG)) {
             return true;
         }
 

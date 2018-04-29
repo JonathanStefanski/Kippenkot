@@ -17,8 +17,7 @@ export class UserListComponent implements OnInit {
 
     users: User[];
     roles: string[];
-    hideId: boolean;    
-    flags = [];
+    hideId: boolean; 
 
     constructor(
         private _adminService: AdminService,
@@ -33,17 +32,6 @@ export class UserListComponent implements OnInit {
             }
         );
         this.hideId = true;
-
-        this._adminService.getFlags().subscribe(
-            data => {
-                Object.keys(data).forEach((i) => {
-                    this.flags.push({
-                        code: i,
-                        country: data[i]
-                    });
-                });
-            }
-        );
     }
 
     toggleIds() {        

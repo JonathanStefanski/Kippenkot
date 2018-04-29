@@ -3,13 +3,14 @@ import { RouterModule, CanActivate } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { Page404Component, PageErrorComponent } from './page-404.component';
-import { AuthGuard, AdminGuard } from './authentication/auth-guard.service';
+import { AuthGuard, AdminGuard, EurosongGuard } from './authentication/auth-guard.service';
 
 import { SelectiveStrategy } from './shared/selective-strategy.service';
 
 const ROUTES = [
     { path: 'home', component: HomeComponent },
     { path: 'admin', data: {preload: true}, loadChildren: './admin/admin.module#AdminModule', canActivate: [AdminGuard]},
+    { path: 'eurosong', data: {preload: true}, loadChildren: './eurosong/euro.module#EurosongModule', canActivate: [EurosongGuard]},
     { path: 'mastermind', data: {preload: true}, loadChildren: './mastermind/mastermind.module#MasterMindModule'},
     { path: 'error', component: PageErrorComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },

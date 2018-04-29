@@ -1,0 +1,15 @@
+<p>
+  euro-test works!
+</p>
+
+<div *ngIf="countries" class="flags">
+  <div class="flag" *ngFor="let c of countries; let i = index;" pTooltip="{{i+1}}. {{c.country}}" tooltipPosition="bottom">
+      <img class="img-fluid" src="assets/images/flags/{{c.code}}.svg" />
+      <div class="flag-score">
+          <span class="flag-score-inner">
+              {{c.totalScore}}
+            </span>
+      </div>
+      
+  </div>
+</div>
