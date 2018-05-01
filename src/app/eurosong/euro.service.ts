@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 
 import { AuthService } from '../authentication/auth.service';
@@ -18,8 +18,16 @@ export class EurosongService {
     }
     
     getCountries(): Observable<Array<Country>> {
-        const url = `${environment.apiUrl}/api/eurosong/getCountries`;
+        const url = `${this.baseUrl}/getCountries`;
         return this._httpClient.get<Array<Country>>(url);
+    }
+
+    getCountry(id: number): Observable<Country> {
+        if (id === 0) { return Observable.of(null); }
+        const url = `${this.baseUrl}/getCountry`;
+        const params = new HttpParams().set('id', id.toString());
+
+        return this._httpClient.get<Country>(url, {params});
     }
     
 }

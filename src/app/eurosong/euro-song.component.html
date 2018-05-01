@@ -1,0 +1,16 @@
+
+
+<div class="container">
+    <ul>
+        <li>Id: {{this.country.id}}</li>
+        <li>Land: {{this.country.country}}</li>
+        <li>Artiest: {{this.country.artist}}</li>
+        <li>Lied: {{this.country.song}}</li>
+        <li *ngIf="this.country.totalScore">Score: {{this.country.totalScore}}</li>
+        <li *ngIf="myScore">Act score: {{this.myScore.actScore}}</li>
+        <li *ngIf="myScore">Lied score: {{this.myScore.songScore}}</li>
+        <li *ngIf="myScore">Stem score: {{this.myScore.voiceScore}}</li>
+      </ul>
+      
+  <a routerLink="/eurosong" class="btn btn-primary">Keer terug naar overzicht</a>
+</div>

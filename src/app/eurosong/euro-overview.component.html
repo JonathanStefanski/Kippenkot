@@ -1,0 +1,24 @@
+<div *ngIf="countries" class="container">
+  <div class="row">
+    <a class="col-lg-2 col-sm-4 col-6" *ngFor="let c of countries" [routerLink]="['/eurosong',c.id]">
+        <div class="card mb-3 box-shadow">
+          <div class="card-body p-0">
+              <img src="assets/images/flags/{{c.code}}.svg" alt="Flag of {{c.country}}" class="card-img-top" />
+              <div *ngIf="c.confirmed" class="score total-score text-dark">{{c.totalScore}}</div>
+              <div *ngIf="!c.confirmed && c.scores[0]" class="score sub-scores text-dark">
+                  <div class="top-left">Act: {{c.scores[0].actScore}}</div>
+                  <div>Lied: {{c.scores[0].songScore}}</div>
+                  <div class="bottom-right">Zang: {{c.scores[0].voiceScore}}</div>
+                </div>
+          </div>
+          
+          <div class="card-footer text-center p-0">
+            {{c.followNr}}. {{c.country}}
+          </div>
+          
+          
+        </div>
+      </a>
+  </div>
+  
+</div>
