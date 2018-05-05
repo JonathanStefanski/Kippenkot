@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EurosongService } from './euro.service';
 
 import { AppSharedModule } from '../shared/shared.module';
-import { SharedModule, TooltipModule } from 'primeng/primeng';
+import { SharedModule, TooltipModule, SliderModule } from 'primeng/primeng';
 import { CountriesResolver, CountryResolver } from './euro-resolver.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../shared/token.interceptor';
@@ -32,6 +32,7 @@ const ROUTES = [
         ReactiveFormsModule,
         TooltipModule,
         SharedModule,
+        SliderModule,
         HttpClientModule,
         RouterModule.forChild(ROUTES) 
     ],

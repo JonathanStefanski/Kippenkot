@@ -13,6 +13,7 @@ interface ICountry {
 
 interface IScore {
     user: string;
+    userName: string;
     country: number;
     actScore: number;
     songScore: number;
@@ -32,8 +33,17 @@ export class Country implements ICountry {
     public scores: Score[];
 }
 
-export class Score implements IScore {
+export class Score implements IScore {    
+    constructor(user: string, country: number) {
+        this.user = user;
+        this.country = country;
+        this.actScore = 0;
+        this.songScore = 0;
+        this.voiceScore = 0;
+    }
+
     public user: string;
+    public userName: string;
     public country: number;
     public actScore: number;
     public songScore: number;

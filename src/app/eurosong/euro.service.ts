@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 
 import { AuthService } from '../authentication/auth.service';
 import { environment } from '../../environments/environment';
-import { Country } from './euro.model';
+import { Country, Score } from './euro.model';
 
 
 @Injectable()
@@ -28,6 +28,11 @@ export class EurosongService {
         const params = new HttpParams().set('id', id.toString());
 
         return this._httpClient.get<Country>(url, {params});
+    }
+
+    saveScore(score: Score): Observable<{}> {
+        const url = `${this.baseUrl}/savePoints`;
+        return this._httpClient.post<{}>(url, score);
     }
     
 }

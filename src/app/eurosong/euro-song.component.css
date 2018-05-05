@@ -1,0 +1,55 @@
+h1 > img {
+    height: 45px;
+    margin-bottom: 10px;
+}
+
+h1 > span {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+h6 {
+    font-style: italic;
+}
+
+.box {
+    max-width: 450px;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 10px 40px 40px 40px;
+    background: lightgray;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.box > p {
+    font-weight: bold;
+    font-size: 110%;
+}
+
+.box-act {
+    border-color: blue;
+    color: blue;
+}
+.box-song {
+    border-color: green;
+    color: green;
+}
+.box-voice {
+    border-color: purple;
+    color: purple;
+}
+
+.ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: .7em;
+    display: block;
+    border: 0;
+    background: #14a4ff;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) inset;
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) inset;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) inset;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px; }
