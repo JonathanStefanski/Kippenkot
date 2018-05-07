@@ -34,5 +34,10 @@ export class EurosongService {
         const url = `${this.baseUrl}/savePoints`;
         return this._httpClient.post<{}>(url, score);
     }
+
+    confirm(): Observable<{}> {
+        const url = `${this.baseUrl}/confirm`;
+        return this._httpClient.post<{}>(url, {});
+    }
     
 }
