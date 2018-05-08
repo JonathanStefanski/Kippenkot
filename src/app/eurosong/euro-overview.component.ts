@@ -36,6 +36,7 @@ export class EuroOverviewComponent implements OnInit {
 
   initialiseData(data: Country[]) {
     this.countries = data;  
+    this.countries.forEach((c) => c.scores = c.scores.filter(sc => sc.user === this._auth.currentUser.id));
 
     this.confirmed = this.countries.some(c => c.confirmed);
     this.completed = !this.countries.some(c => c.scores.length === 0) && !this.confirmed;
