@@ -35,11 +35,62 @@
 
         <!-- Song Already confirmed -->
         <div *ngIf="country.confirmed">
-            Here be scores!
+            <table class="table table table-bordered table-dark mx-auto">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Act</th>
+                    <th scope="col">Lied</th>
+                    <th scope="col">Zang</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">{{myScore.userName}}</th>
+                    <td [ngClass]="{'text-danger': myScore.actScore === bounds.min_act, 'text-success': myScore.actScore === bounds.max_act, 
+                                                    'font-weight-bold': myScore.actScore === bounds.min_act || myScore.actScore === bounds.max_act}">
+                        {{myScore.actScore}}
+                    </td>
+                    <td [ngClass]="{'text-danger': myScore.songScore === bounds.min_song, 'text-success': myScore.songScore === bounds.max_song, 
+                                                    'font-weight-bold': myScore.songScore === bounds.min_song || myScore.songScore === bounds.max_song}">
+                        {{myScore.songScore}}
+                    </td>
+                    <td [ngClass]="{'text-danger': myScore.voiceScore === bounds.min_voice, 'text-success': myScore.voiceScore === bounds.max_voice, 
+                                                    'font-weight-bold': myScore.voiceScore === bounds.min_voice || myScore.voiceScore === bounds.max_voice}">
+                        {{myScore.voiceScore}}
+                    </td>
+                    <td class="font-weight-bold" [ngClass]="{'text-danger': myScore.voiceScore + myScore.songScore + myScore.actScore === bounds.min_total, 'text-success': myScore.voiceScore + myScore.songScore + myScore.actScore === bounds.max_total, 
+                                                                            'font-weight-bold': myScore.voiceScore + myScore.songScore + myScore.actScore === bounds.min_total || myScore.voiceScore + myScore.songScore + myScore.actScore === bounds.max_total}">
+                        {{myScore.voiceScore + myScore.songScore + myScore.actScore}}
+                    </td>
+                </tr>
+                  <tr *ngFor="let score of country.scores">
+                    <th scope="row">{{score.userName}}</th>
+                    <td [ngClass]="{'text-danger': score.actScore === bounds.min_act, 'text-success': score.actScore === bounds.max_act, 
+                                                    'font-weight-bold': score.actScore === bounds.min_act || score.actScore === bounds.max_act}">
+                        {{score.actScore}}
+                    </td>
+                    <td [ngClass]="{'text-danger': score.songScore === bounds.min_song, 'text-success': score.songScore === bounds.max_song, 
+                                                    'font-weight-bold': score.songScore === bounds.min_song || score.songScore === bounds.max_song}">
+                        {{score.songScore}}
+                    </td>
+                    <td [ngClass]="{'text-danger': score.voiceScore === bounds.min_voice, 'text-success': score.voiceScore === bounds.max_voice, 
+                                                    'font-weight-bold': score.voiceScore === bounds.min_voice || score.voiceScore === bounds.max_voice}">
+                        {{score.voiceScore}}
+                    </td>
+                    <td class="font-weight-bold" [ngClass]="{'text-danger': score.voiceScore + score.songScore + score.actScore === bounds.min_total, 'text-success': score.voiceScore + score.songScore + score.actScore === bounds.max_total, 
+                                                                            'font-weight-bold': score.voiceScore + score.songScore + score.actScore === bounds.min_total || score.voiceScore + score.songScore + score.actScore === bounds.max_total}">
+                        {{score.voiceScore + score.songScore + score.actScore}}
+                    </td>
+                  </tr>                  
+                </tbody>
+              </table>
         </div>
     </div>
    
 
-    <button type="button" class="btn btn-success" (click)="saveScore()">Opslaan</button>
+    <hr />
+    <button *ngIf="!country.confirmed" type="button" class="btn btn-success mr-3" (click)="saveScore()">Opslaan</button>
     <a routerLink="/eurosong" class="btn btn-primary">Keer terug naar overzicht</a>
 </div>
