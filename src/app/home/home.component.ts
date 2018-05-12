@@ -16,11 +16,11 @@ export class HomeComponent implements OnInit {
 
     constructor(private _auth: AuthService) { }
 
-    ngOnInit(): void {
-        this._auth.refreshRoles();
+    ngOnInit(): void {        
         this.isLoggedIn = this._auth.isLoggedIn();
 
         if (this.isLoggedIn) {
+            this._auth.refreshRoles();
             this.username = this._auth.currentUser.userName;
         }        
     }
