@@ -26,6 +26,22 @@ export class AuthService {
         return Observable.throw(err);
     }
 
+    refreshRoles(): void {        
+        const bearer = this.currentUser == null ? '' : this.currentUser.access_token;
+        const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${bearer}` });
+        const options = new RequestOptions({ headers: headers });
+
+        const url = `${this.baseUrl}/RefreshRoles`;
+
+        this._http.get(url, options)       
+        .map(this.extractData) 
+        .catch(this._handleError)
+        .subscribe((response) => {
+            this.currentUser.roles = response;
+            localStorage.setItem('_currentUser', JSON.stringify(this.currentUser));
+        });
+    }
+
     isLoggedIn(): boolean {
         return !!this.currentUser;
     }
@@ -52,7 +68,6 @@ export class AuthService {
                 this.currentUser = userInfo;          
                 this.currentUser.roles = JSON.parse(userInfo['roles']);                
                 localStorage.setItem('_currentUser', JSON.stringify(this.currentUser));
-                console.log(this.currentUser);
                 return true;
             } else {
                 return false;

@@ -37,7 +37,13 @@ export class CountryResolver implements Resolve<Country> {
             return Observable.of(null);
         }
 
-        return this._eurosongService.getCountry(+id)            
+        return this._eurosongService.getCountry(+id)
+            .do(country => {
+                if (country === null) {
+                    this._router.navigate(['/eurosong']);
+                    return Observable.of(null);
+                }
+            })            
             .catch(error => {
                 console.log(`Retrievel error: ${error}`);
                 this._router.navigate(['/eurosong']);

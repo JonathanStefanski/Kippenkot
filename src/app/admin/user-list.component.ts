@@ -27,8 +27,8 @@ export class UserListComponent implements OnInit {
     ngOnInit() { 
         this._route.data.subscribe(
             data => {
-                this.users = data['users']; console.log(this.users); 
-                this.roles = data['roles']; console.log(this.roles);
+                this.users = data['users']; 
+                this.roles = data['roles']; 
             }
         );
         this.hideId = true;
