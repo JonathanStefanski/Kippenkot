@@ -17,9 +17,9 @@
                 <li *ngIf="isInRole(Roles.EUROSONG)" class="nav-item">
                     <a class="nav-link" data-toggle="tab" routerLink="/eurosong" routerLinkActive="active">Eurosong</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" routerLink="/mastermind" routerLinkActive="active">Mastermind</a>
-                </li>
+                </li> -->
             </ul>            
             <div *ngIf="_auth.isLoggedIn()" class="form-inline text-white">
                 <span>Welkom {{_auth.currentUser.userName}}!</span>&nbsp; (

@@ -375,11 +375,11 @@ END OF TERMS AND CONDITIONS
 MIT
 MIT
 
-@angular/forms@6.0.0
+@angular/http@6.0.0
 MIT
 MIT
 
-@angular/http@6.0.0
+@angular/forms@6.0.0
 MIT
 MIT
 

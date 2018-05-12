@@ -11,7 +11,7 @@ const ROUTES = [
     { path: 'home', component: HomeComponent },
     { path: 'admin', data: {preload: true}, loadChildren: './admin/admin.module#AdminModule', canActivate: [AdminGuard]},
     { path: 'eurosong', data: {preload: true}, loadChildren: './eurosong/euro.module#EurosongModule', canActivate: [EurosongGuard]},
-    { path: 'mastermind', data: {preload: true}, loadChildren: './mastermind/mastermind.module#MasterMindModule'},
+    // { path: 'mastermind', data: {preload: true}, loadChildren: './mastermind/mastermind.module#MasterMindModule'},
     { path: 'error', component: PageErrorComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', component: Page404Component }
